@@ -1,7 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ubuntu:20.04
-COPY ./app /app
-RUN apt-get update && apt-get install -y\
-    python-dev\
- && rm -rf /var/lib/apt/lists/*
+FROM python:3.8-slim-buster
+WORKDIR /app
+COPY ./app .
 CMD [ "python", "/app/app.py" ]
