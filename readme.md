@@ -30,3 +30,5 @@ docker run -dp 8000:5000 python-docker:latest
 - docker ps -a
 - docker stop \<container-name\>
 - docker run --name \<container-name\> \<image-name\>
+- docker volume create \<volume-name\> # create a area on host filesystem to store data of containers
+- docker network create \<network-name\> # create network for containers can communicate
