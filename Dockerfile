@@ -1,7 +1,8 @@
 # syntax=docker/dockerfile:1
-FROM ubuntu:20.04
-COPY ./app /app
-RUN apt-get update && apt-get install -y\
-    python-dev\
- && rm -rf /var/lib/apt/lists/*
-CMD [ "python", "/app/app.py" ]
+
+FROM python:3.8-slim-buster
+WORKDIR /app
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+COPY . .
+CMD [ "python3", "-m", "flask", "run", "--host=0.0.0.0" ]
